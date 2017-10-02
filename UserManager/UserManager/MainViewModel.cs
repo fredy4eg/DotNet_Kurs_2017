@@ -36,11 +36,38 @@ namespace UserManager
                 "FilterString", typeof(string),
                 typeof(MainViewModel), new PropertyMetadata("", OnFiltreStringChange));
 
+        public string FilterString1
+        {
+            get { return (string)GetValue(FilterStringProperty1); }
+            set { SetValue(FilterStringProperty1, value); }
+        }
+
+        public static readonly DependencyProperty FilterStringProperty1 =
+            DependencyProperty.Register(
+                "FilterString1", typeof(string),
+                typeof(MainViewModel), new PropertyMetadata("", OnFiltreStringChange1));
+        public string FilterString2
+        {
+            get { return (string)GetValue(FilterStringProperty2); }
+            set { SetValue(FilterStringProperty2, value); }
+        }
+
+        public static readonly DependencyProperty FilterStringProperty2 =
+            DependencyProperty.Register(
+                "FilterString2", typeof(string),
+                typeof(MainViewModel), new PropertyMetadata("", OnFiltreStringChange2));
         public static void OnFiltreStringChange(DependencyObject d, DependencyPropertyChangedEventArgs arg)
         {
             ((MainViewModel)d).UserList.Refresh();
         }
-
+        public static void OnFiltreStringChange1(DependencyObject d, DependencyPropertyChangedEventArgs arg)
+        {
+            ((MainViewModel)d).UserList.Refresh();
+        }
+        public static void OnFiltreStringChange2(DependencyObject d, DependencyPropertyChangedEventArgs arg)
+        {
+            ((MainViewModel)d).UserList.Refresh();
+        }
         public SimpleCommand CreateUserCommand { get; set; }
         public SimpleCommand LoadUsersCommand { get; set; }
 
@@ -62,7 +89,6 @@ namespace UserManager
             var ls = new ObservableCollection<User>();
             UserList = CollectionViewSource.GetDefaultView(ls);
             UserList.Filter += FiltreUser;
-
             CreateUserCommand = new SimpleCommand(CreateUser);
             LoadUsersCommand = new SimpleCommand(LoadUsers);
         }
@@ -76,12 +102,53 @@ namespace UserManager
                 return false;
             }
 
-            if (string.IsNullOrEmpty(FilterString) || user.Name.Contains(FilterString))
+            if (!(string.IsNullOrEmpty(FilterString) || user.Name.Contains(FilterString)))
+            {
+                return false;
+            }
+
+            if (!(string.IsNullOrEmpty(FilterString1) || user.Phone.Contains(FilterString1)))
+            {
+                return false;
+            }
+            if (!(string.IsNullOrEmpty(FilterString2) || user.Email.Contains(FilterString2)))
+            {
+                return false;
+            }
+            return true;
+        }
+
+        /*private bool FiltrePhone(object obj)
+        {
+            var phone = obj as User;
+
+            if (phone == null)
+            {
+                return false;
+            }
+
+            if (string.IsNullOrEmpty(FilterString1) || phone.Phone.Contains(FilterString1))
             {
                 return true;
             }
 
             return false;
         }
+        private bool FiltreMail(object obj)
+        {
+            var mail = obj as User;
+
+            if (mail == null)
+            {
+                return false;
+            }
+
+            if (string.IsNullOrEmpty(FilterString2) || mail.Email.Contains(FilterString2))
+            {
+                return true;
+            }
+
+            return false;
+        }*/
     }
 }

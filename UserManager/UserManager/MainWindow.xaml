@@ -58,13 +58,13 @@
                 <ColumnDefinition Width="10*"/>
             </Grid.ColumnDefinitions>
             <Label Content="Имя:" HorizontalContentAlignment="Right" Padding="5,3,10,5"/>
-            <TextBox TextWrapping="Wrap" Text="{Binding FilterString, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" />
+            <TextBox TextWrapping="Wrap" Text="{Binding FilterString, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" TextChanged="TextBox_TextChanged_1" Height="23" VerticalAlignment="Top" />
 
             <Label Grid.Column="3" Content="Телефон:" HorizontalContentAlignment="Right" Padding="5,3,10,5"/>
-            <TextBox TextWrapping="Wrap" Grid.Column="4" />
+            <TextBox TextWrapping="Wrap" Text="{Binding FilterString1, UpdateSourceTrigger=PropertyChanged}" Grid.Column="4" TextChanged="TextBox_TextChanged" />
 
             <Label Grid.Column="6" Content="Почта:" HorizontalContentAlignment="Right" Padding="5,3,10,5"/>
-            <TextBox TextWrapping="Wrap" Grid.Column="7" />
+            <TextBox TextWrapping="Wrap" Text="{Binding FilterString2, UpdateSourceTrigger=PropertyChanged}" Grid.Column="7" TextChanged="TextBox_TextChanged_2" />
 
             <Label Grid.Column="9" Content="Права:" HorizontalContentAlignment="Right" Padding="5,3,10,5"/>
             <ComboBox Grid.Column="10" SelectedIndex="0" >

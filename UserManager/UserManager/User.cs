@@ -24,10 +24,10 @@ namespace UserManager
         {
             return new User[]
             {
-                new User() { Name = "Ivan", Phone="256884", Type = UserType.Moderator},
-                new User() { Name = "Bhamri", Phone="2755884", Type = UserType.User},
-                new User() { Name = "Vlad", Phone="174767", Type = UserType.User},
-                new User() { Name = "Nasty", Phone="4845874", Type = UserType.Admin}
+                new User() { Name = "Ivan", Phone="256884", Email ="1@mail", Type = UserType.Moderator},
+                new User() { Name = "Bhamri", Phone="2755884", Email ="2@mail", Type = UserType.User},
+                new User() { Name = "Vlad", Phone="174767", Email ="3@mail", Type = UserType.User},
+                new User() { Name = "Nasty", Phone="4845874", Email ="4@mail", Type = UserType.Admin}
             };
         }
 
